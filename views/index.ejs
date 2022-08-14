@@ -27,7 +27,7 @@
 </head>
 
 
-<body>
+<body style="background-color: #28364b;">
     <!-- Mapbox -->
     <script
         src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-directions/v4.1.0/mapbox-gl-directions.js"></script>
@@ -42,14 +42,16 @@
     <!-- Body HTML -->
     <div class="container">
         <div class="row">
-            <div class="col-sm-12 col-md-12 col-lg-12 text-center p-5">
-                <h1>AR Navigation</h1>
+            <div class="col-sm-12 col-md-12 col-lg-12 text-center p-4" style="background-color: #1d2735;">
+                <h3 class='text-white' style="font-family: Comic Sans MS;">Navigator</h3>
             </div>
+        </div>
+        <div class="row">
             <div class="col-sm-12 col-md-12 col-lg-12 text-center">
                 <div id="map"></div>
             </div>
             <div class="col-sm-12 col-md-12 col-lg-12 text-center p-5">
-                <button id="navigate-button">Navigate</button>
+                <button id="navigate-button" style="font-family: Comic Sans MS;">Search Route</button>
             </div>
         </div>
     </div>
