@@ -16,8 +16,7 @@ $(function () {
                 sendItemToApi(steps)
             }
         })
-
-
+        alert("Naviagtion details send")
     })
 })
 
