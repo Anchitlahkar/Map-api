@@ -69,15 +69,31 @@ function success(position) {
 }
 
 function sendItemToApi(route) {
+    let distance = []
+    let instruction = []
+    let location = []
+
+    for (i = 0; i < route.length; i++) {
+        distance.push(route[i]["distance"])
+        instruction.push(route[i]["maneuver"]["instruction"])
+        location.push(route[i]["maneuver"]["location"])
+    }
+
+
     var req = new XMLHttpRequest()
     req.open('POST', '/location-details')
     req.setRequestHeader("Content-Type", "application/json")
     req.send(JSON.stringify({
-        route: route
+        route: {
+            distance: distance,
+            instruction: instruction,
+            location, location
+        }
     }))
 
-    console.log(route)
-
+    console.log(distance)
+    console.log(instruction)
+    console.log(location)
 
     req.addEventListener('load', () => {
         console.log(req.responseText)
