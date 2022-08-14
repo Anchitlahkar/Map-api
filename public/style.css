@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap");
+
 body {
     height: 100%;
     width: 100%;
@@ -9,11 +11,12 @@ body {
 
 #navigate-button {
     border: none;
-    width: 60%;
+    width: 47%;
     padding: 1em;
     background-color: black;
     color: white;
     border-radius: 1em;
+    margin-top: 5%;
 }
 
 @media (max-width: 700px) {
