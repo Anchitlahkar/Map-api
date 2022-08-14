@@ -4,6 +4,7 @@ let route
 
 $(document).ready(function () {
     initGeolocation();
+    getLocation()
 })
 
 $(function () {
@@ -93,6 +94,47 @@ function sendItemToApi(route) {
     console.log(distance)
     console.log(instruction)
     console.log(location)
+
+    req.addEventListener('load', () => {
+        console.log(req.responseText)
+        console.log("Request done")
+    })
+
+    req.addEventListener('error', (e) => {
+        console.log(e)
+    })
+
+    var x = document.getElementById("demo");
+}
+
+function getLocation() {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(
+            // Success function
+            sendItemToPositionApi,
+            // Error function
+            null,
+            // Options. See MDN for details.
+            {
+                enableHighAccuracy: true,
+                timeout: 5000,
+                maximumAge: 0
+            });
+    } else {
+        x.innerHTML = "Geolocation is not supported by this browser.";
+    }
+}
+
+function sendItemToPositionApi(pos) {
+    var req = new XMLHttpRequest()
+    req.open('POST', '/get-location')
+    req.setRequestHeader("Content-Type", "application/json")
+    req.send(JSON.stringify({
+        position: {
+            latitude: pos.coords.latitude,
+            longitude: pos.coords.longitude
+        }
+    }))
 
     req.addEventListener('load', () => {
         console.log(req.responseText)
