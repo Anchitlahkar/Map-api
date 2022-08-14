@@ -1,7 +1,7 @@
 const express = require('express')
 const bodyParser = require('body-parser')
-
 const api = express();
+api.set("view engine", "ejs");
 const server = require("http").Server(api);
 
 let route
@@ -18,6 +18,10 @@ api.use(bodyParser.json())
 
 api.listen(process.env.PORT, () => {
     console.log('Api Running')
+})
+
+api.get("/",(req,res)=>{
+    res.render("index")
 })
 
 api.get("/api", (req, res) => {
