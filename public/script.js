@@ -76,7 +76,8 @@ function sendItemToApi(route) {
     for (i = 0; i < route.length; i++) {
         distance.push(route[i]["distance"])
         instruction.push(route[i]["maneuver"]["instruction"])
-        location.push(route[i]["maneuver"]["location"])
+        location.push([route[i]["maneuver"]["location"][0]*1000000000000,route[i]["maneuver"]["location"][1]*1000000000000])
+        console.log([route[i]["maneuver"]["location"][0]*1000000000000,route[i]["maneuver"]["location"][1]*1000000000000])
     }
 
 
@@ -131,8 +132,8 @@ function sendItemToPositionApi(pos) {
     req.setRequestHeader("Content-Type", "application/json")
     req.send(JSON.stringify({
         position: {
-            latitude: pos.coords.latitude,
-            longitude: pos.coords.longitude
+            latitude: pos.coords.latitude*1000000000000,
+            longitude: pos.coords.longitude*1000000000000
         }
     }))
 
