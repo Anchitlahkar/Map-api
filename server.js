@@ -3,8 +3,7 @@ const bodyParser = require('body-parser')
 const api = express();
 api.set("view engine", "ejs");
 
-let route
-
+let route, pos
 
 api.use(express.static('public'))
 api.use(bodyParser.json())
@@ -39,3 +38,11 @@ api.post('/location-details', (req, res) => {
   console.log(req.body)
   route = req.body
 })
+
+api.get('/remove-details', (req, res)=>{
+  route = ""
+  pos = ""
+  res.send("Reset Details....")
+})
+
+
